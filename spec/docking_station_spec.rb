@@ -15,4 +15,10 @@ describe DockingStation do
     expect(subject).to respond_to(:dock).with(1).argument
   end
 
+  it 'shows bikes' do
+    subject.dock(1)
+    expect(subject.bikes).to be_an_instance_of(Fixnum)
+
+  end
+
 end
