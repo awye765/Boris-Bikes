@@ -8,7 +8,7 @@ describe DockingStation do
   end
 
   it 'releases working bikes' do
-    station.dock(1)
+    station.dock Bike.new
     bike = station.release_bike
     expect(bike).to be_working
   end
@@ -18,18 +18,15 @@ describe DockingStation do
   end
 
   it 'shows bikes' do
-    station.dock(1)
-
-    expect(station.bikes).to be_an_instance_of(Fixnum)
+    station.dock Bike.new
+    expect(station.bikes[0]).to be_an_instance_of(Bike)
   end
 
   it 'exception when bike released with none docked' do
-    station.dock(1)
-    station.release_bike
     expect{station.release_bike}.to raise_error 'No bikes in station!'
   end
 
   it 'exception when dock full' do
-    expect{station.dock(2)}.to raise_error "Dock full!"
+    expect{ 21.times { station.dock Bike.new } }.to raise_error "Dock full!"
   end
 end
