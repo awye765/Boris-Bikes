@@ -19,6 +19,7 @@ describe DockingStation do
 
   it 'shows bikes' do
     station.dock(1)
+
     expect(station.bikes).to be_an_instance_of(Fixnum)
   end
 
@@ -31,5 +32,4 @@ describe DockingStation do
   it 'exception when dock full' do
     expect{station.dock(2)}.to raise_error "Dock full!"
   end
-
 end
