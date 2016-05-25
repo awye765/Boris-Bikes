@@ -35,6 +35,8 @@ require 'DockingStation'
 		expect {subject.dock_bike(Bike.new)}.to raise_error 'Error: Docking Station Full'
 	end
 
+
+
    end
   end
 end
