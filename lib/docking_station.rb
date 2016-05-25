@@ -7,14 +7,24 @@ class DockingStation
   end
 
   def release_bike
-    raise 'No bikes in station!' unless @bikes.size > 0
+    raise 'No bikes in station!' if empty?
     @bikes.shift
     Bike.new
   end
 
   def dock(bike)
-     raise "Dock full!" unless @bikes.size < 20
-     @bikes << Bike.new
+     raise "Dock full!" if full?
+     @bikes << bike
+  end
+
+  private
+
+  def full?
+    @bikes.size >= 20
+  end
+
+  def empty?
+    @bikes.empty?
   end
 
 end
