@@ -10,6 +10,7 @@ class DockingStation
   end
 
   def dock(bike)
+     raise "Dock full!" unless bike < 2
      @bikes = bike
   end
 

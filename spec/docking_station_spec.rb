@@ -28,4 +28,8 @@ describe DockingStation do
     expect{station.release_bike}.to raise_error 'No bikes in station!'
   end
 
+  it 'exception when dock full' do
+    expect{station.dock(2)}.to raise_error "Dock full!"
+  end
+
 end
