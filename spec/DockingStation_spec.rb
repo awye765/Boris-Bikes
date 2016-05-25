@@ -28,5 +28,11 @@ end
 	it 'raises error if no bikes available' do
 		expect {subject.release_bike}.to raise_error 'Error. No bikes available'
 	end
+describe '#dock' do 
+	it 'raises error when station is full' do
+		subject.dock_bike(Bike.new)
+		expect {subject.dock_bike(Bike.new)}.to raise_error 'Error: Docking Station Full'
+	end
+end
 end
 end
