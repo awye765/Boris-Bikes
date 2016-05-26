@@ -9,10 +9,10 @@ require 'DockingStation'
     end
 
     it "releases the working bike" do
-  	  bike = Bike.new
-  	  subject.dock_bike(bike)
-	  bike = subject.release_bike
-	  expect(bike).to be_working
+  	  bikes = Bike.new
+  	  subject.dock_bike(bikes)
+	  bikes = subject.release_bike
+	  expect(bikes).to be_working
     end
 
     it "docks the bike" do
@@ -21,17 +21,17 @@ require 'DockingStation'
 
   describe '#release_bike' do
       it 'releases bike' do
-	    bike = Bike.new
-	    subject.dock_bike(bike)
-	    expect(subject.release_bike).to eq bike
+	    bikes = Bike.new
+	    subject.dock_bike(bikes)
+	    expect(subject.release_bike).to eq bikes
       end
 	  it 'raises error if no bikes available' do
 		expect {subject.release_bike}.to raise_error 'Error. No bikes available'
 	  end
 	
-    describe '#dock' do 
+    describe '#dock_bike' do 
 	  it 'raises error when station is full' do
-		subject.dock_bike(Bike.new)
+   20.times { subject.dock_bike Bike.new }
 		expect {subject.dock_bike(Bike.new)}.to raise_error 'Error: Docking Station Full'
 	end
 
