@@ -15,6 +15,13 @@ describe DockingStation do
   	  expect(bikes).to be_working
     end
 
+    it "won't release a broken bike",:focus=>true do
+      bike = Bike.new
+      bike.report_broken
+      subject.dock_bike bike
+      expect(subject.release_bike).to eq 'Error. No working bikes available'
+    end
+
     it "docks the bike" do
       expect(subject).to respond_to :dock_bike
     end

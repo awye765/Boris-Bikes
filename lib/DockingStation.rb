@@ -13,13 +13,14 @@ class DockingStation
 
   def dock_bike(bike)
   	fail 'Error: Docking Station Full' if full?
-	  bikes << bike
+    @bikes << bike
   end
 
   def release_bike
-    fail 'Error. No bikes available' if empty?
-    bikes.pop
+  fail 'Error. No bikes available' if empty?
+  @bikes.pop
   end
+  
 
   private
 
@@ -32,7 +33,6 @@ class DockingStation
   def empty?
     bikes.empty?
   end
-
 end
 
 
