@@ -30,7 +30,7 @@ describe DockingStation do
         bike.report_broken
         docking_station.dock_bike(bike)
         expect{docking_station.release_bike}.to raise_error("Error. No working bikes available")
-    end
+      end
 
 
       it 'releases a bike when there are working bikes and the last one is broken' do
@@ -42,7 +42,7 @@ describe DockingStation do
         docking_station.dock_bike(bike1)
         expect{docking_station.release_bike}.not_to raise_error
       end
-    end
+  end
 
 
     describe '#release_bike' do
@@ -58,10 +58,10 @@ describe DockingStation do
     end
 
     describe '#dock_bike' do
-     it 'raises error when station is full' do
-      subject.capacity.times { subject.dock_bike Bike.new }
-      expect {subject.dock_bike(Bike.new)}.to raise_error 'Error: Docking Station Full'
-     end
+      it 'raises error when station is full' do
+        subject.capacity.times { subject.dock_bike Bike.new }
+        expect {subject.dock_bike(Bike.new)}.to raise_error 'Error: Docking Station Full'
+      end
     end
 
 
@@ -71,17 +71,17 @@ describe DockingStation do
         50.times { docking_station.dock_bike Bike.new }
         expect{ docking_station.dock_bike Bike.new }.to raise_error 'Error: Docking Station Full'
       end
-    end
+    end 
 
 
     describe 'initialization' do
       subject { DockingStation.new }
       let(:bikes) { Bike.new }
-      it 'defaults capacity' do
+    it 'defaults capacity' do
       described_class::DEFAULT_CAPACITY.times do
       subject.dock_bike(bikes)
       end
-      expect{ subject.dock_bike(bikes) }.to raise_error 'Error: Docking Station Full'
+      expect { subject.dock_bike(bikes) }.to raise_error 'Error: Docking Station Full'
       end
     end
 end
