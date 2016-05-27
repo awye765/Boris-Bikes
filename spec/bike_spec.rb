@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #describe the bike class
 
 require 'bike'
@@ -13,3 +14,10 @@ describe Bike do
 	end
 end
 
+=======
+require 'bike'
+
+describe Bike do
+	it {is_expected.to respond_to :working?}
+end
+>>>>>>> c3f00e7b9c513489ade4a3b29aaeef0a324f36bb

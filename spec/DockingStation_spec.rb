@@ -12,18 +12,42 @@ describe DockingStation do
       bikes = Bike.new
       subject.dock_bike(bikes)
       bikes = subject.release_bike
-      expect(bikes).to be_working
+      expect(bikes.broken?).to be false
     end
 
     it "won't release a broken bike" do
       bike = Bike.new
       bike.report_broken
       subject.dock_bike bike
-      expect(subject.release_bike).to eq 'Error. No working bikes available'
+      expect {subject.release_bike}.to raise_error 'Error. No working bikes available'
     end
+
+    it 'release working bike provided at least one is available in dock' do
+      bike1 = Bike.new
+      subject.dock_bike bike1
+      bike2 = Bike.new
+      bike2.report_broken
+      subject.dock_bike bike2
+      expect(subject.release_bike.class).to eq Bike
+    end
+
 
     it "docks the bike" do
       expect(subject).to respond_to :dock_bike
+    end
+
+    it "docks a broken bike" do
+      bike = Bike.new
+      bike.report_broken
+      subject.dock_bike(bike)
+      expect(subject.bikes.last).to eq bike
+    end
+
+    it "docks a working bike" do
+      bike = Bike.new
+      bike
+      subject.dock_bike(bike)
+      expect(subject.bikes.last).to eq bike
     end
 
     it 'has a default capacity' do
@@ -69,3 +93,8 @@ describe DockingStation do
     expect{ subject.dock_bike(bikes) }.to raise_error 'Error: Docking Station Full'
     end
   end
+
+
+
+
+
