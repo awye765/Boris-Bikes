@@ -1,14 +1,13 @@
 class Bike
-	
-	def working?
-		true
-	end 
+  def initialize
+		@broken = false
+	end
 
 	def docked?
 		false
 	end
 
-	def report_broken 
+	def report_broken
 		@broken = true
 	end
 
@@ -16,7 +15,4 @@ class Bike
 		@broken
 	end
 
-
-
-	
 end
