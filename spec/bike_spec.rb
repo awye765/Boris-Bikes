@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-require 'docking_station'
-
-describe Bike do
-  it 'responds to working?' do
-      expect(subject).to respond_to :working?
-  end 
-
-end
-=======
 #describe the bike class
 
 require 'bike'
@@ -23,4 +13,3 @@ describe Bike do
 	end
 end
 
->>>>>>> day-three
